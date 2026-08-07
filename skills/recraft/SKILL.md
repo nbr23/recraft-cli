@@ -43,6 +43,13 @@ no benefit. Trust the printed dimensions and credit count.
   a plain retry will not clobber a good asset.
 - Styles are a large, changing list. Run `recraft styles` to see valid values instead of guessing;
   `recraft models` lists models and prices.
+- The STYLE column in `recraft styles` (e.g. "Pixel art") is a preset name, not a valid `--style`
+  value — passing it directly gets a 400 `invalid_request_parameter`. To use a preset, pass its
+  STYLE_ID column value via `--style-id <UUID>`. `--style` itself only accepts the small set of
+  base categories (`realistic_image`, `digital_illustration`, `icon`, etc.).
+- When passing `--style-id`, also pass `--model` matching that row's MODEL column. The CLI's
+  default model won't necessarily match the style's model, and a mismatch fails with
+  `invalid_model: requested model '...' doesn't match the style's model '...'`.
 - Exit codes: `0` ok, `1` API/network error, `2` bad arguments, `3` out of credits.
 - Billing is already handled correctly and is not configurable. Nothing to set up per call.
 - It needs `RECRAFT_API_TOKEN` set, or a token at `~/.config/recraft/token`. If it exits 2 saying
