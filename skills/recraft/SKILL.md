@@ -49,6 +49,14 @@ single JSON object instead.
 user. Don't open the file with the Read tool to "check" it — that burns a huge amount of context for
 no benefit. Trust the printed dimensions and credit count.
 
+Every command that has a model concept (`generate`, `edit`, `inpaint`, `outpaint`, `variate`,
+`replace-bg`, `generate-bg`) defaults `--model` to `recraftv4_1`, the latest general-purpose model —
+it is never left for the API to pick implicitly. The printed model column always reflects what was
+actually requested, so mention it to the user when reporting a result (e.g. "generated with
+recraftv4_1"). Pass `--model` explicitly only to match a `--style-id`'s MODEL column (see below) or
+when the user asks for a specific model. `remove-bg`, `vectorize`, `erase`, and `upscale` have no
+model concept — their column prints `-`.
+
 ## Other things worth knowing
 
 - It refuses to overwrite an existing file. Pass `--force` deliberately, or write to a new path;

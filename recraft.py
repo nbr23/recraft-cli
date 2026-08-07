@@ -1117,7 +1117,10 @@ def add_image_input(
 
 
 def add_styling(parser: argparse.ArgumentParser, size: bool = True, count: bool = True) -> None:
-    parser.add_argument("--model", metavar="ID", help=f"see `{PROG} models`")
+    parser.add_argument(
+        "--model", metavar="ID", default="recraftv4_1",
+        help=f"see `{PROG} models`; default recraftv4_1, the latest general-purpose model",
+    )
     parser.add_argument("--style", metavar="STYLE", help=f"see `{PROG} styles`")
     parser.add_argument("--substyle", metavar="SUBSTYLE")
     parser.add_argument("--style-id", metavar="UUID", help="custom style; excludes --style")
@@ -1195,7 +1198,6 @@ def build_parser(argv: list[str] | None = None) -> argparse.ArgumentParser:
     p.add_argument("--vector", action="store_true", help="vector model, writes SVG")
     p.add_argument("--upscale", choices=("upscale4mp", "upscale16mp"), help="upscale during generation")
     add_styling(p)
-    p.set_defaults(model="recraftv4_1")
     add_output(p)
     p.set_defaults(func=cmd_generate)
 
@@ -1249,7 +1251,10 @@ def build_parser(argv: list[str] | None = None) -> argparse.ArgumentParser:
     )
     add_image_input(p, optional_image=url_input)
     p.add_argument("--size", required=True, metavar="SIZE", help="required, e.g. 1024x1024")
-    p.add_argument("--model", metavar="ID")
+    p.add_argument(
+        "--model", metavar="ID", default="recraftv4_1",
+        help=f"see `{PROG} models`; default recraftv4_1, the latest general-purpose model",
+    )
     p.add_argument("-n", type=int, default=1, metavar="COUNT")
     p.add_argument("--seed", type=int, metavar="INT")
     p.add_argument("--format", choices=("png", "webp"))
