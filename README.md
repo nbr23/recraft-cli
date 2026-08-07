@@ -25,6 +25,21 @@ Then allow it once in `.claude/settings.json` to stop the per-call permission pr
 { "permissions": { "allow": ["Bash(recraft:*)"] } }
 ```
 
+### Usage
+
+Once installed, just ask Claude naturally — the skill tells it when to reach for `recraft`:
+
+```
+> generate an icon of a red bicycle, save it as bike.svg
+> remove the background from screenshot.png
+> vectorize this logo
+> what's my Recraft balance?
+```
+
+Claude picks the right subcommand and flags; you don't need to know the CLI syntax yourself. To
+force it to load the skill instead of relying on auto-detection, invoke it explicitly with
+`/recraft:recraft` (plugin skills are namespaced as `/plugin-name:skill-name`).
+
 As a standalone CLI:
 
 ```sh
