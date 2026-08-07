@@ -27,6 +27,9 @@ Typical costs: a V4.1 image ~$0.035, vectorize or remove-bg ~$0.01, `--mode cris
 - Use `-n` rather than repeat invocations when several variations are genuinely wanted.
 - `--dry-run` prints the exact request and spends nothing. Use it to check a command is right.
 - `recraft balance` shows remaining credits. Exit code 3 means the balance is exhausted.
+- **Always tell the user which model was used and what it cost, for every call, not just the
+  expensive ones.** The output line already has both (`path  dimensions  model  credits`) — read
+  them off it, don't guess or omit them from your report.
 
 ## Never overwrite or delete a file unless explicitly asked
 
@@ -52,10 +55,9 @@ no benefit. Trust the printed dimensions and credit count.
 Every command that has a model concept (`generate`, `edit`, `inpaint`, `outpaint`, `variate`,
 `replace-bg`, `generate-bg`) defaults `--model` to `recraftv4_1`, the latest general-purpose model —
 it is never left for the API to pick implicitly. The printed model column always reflects what was
-actually requested, so mention it to the user when reporting a result (e.g. "generated with
-recraftv4_1"). Pass `--model` explicitly only to match a `--style-id`'s MODEL column (see below) or
-when the user asks for a specific model. `remove-bg`, `vectorize`, `erase`, and `upscale` have no
-model concept — their column prints `-`.
+actually requested. Pass `--model` explicitly only to match a `--style-id`'s MODEL column (see
+below) or when the user asks for a specific model. `remove-bg`, `vectorize`, `erase`, and `upscale`
+have no model concept — their column prints `-`.
 
 ## Other things worth knowing
 
@@ -70,6 +72,10 @@ model concept — their column prints `-`.
 - When passing `--style-id`, also pass `--model` matching that row's MODEL column. The CLI's
   default model won't necessarily match the style's model, and a mismatch fails with
   `invalid_model: requested model '...' doesn't match the style's model '...'`.
+- **If that forced model differs from the default `recraftv4_1` — especially a `_pro` variant,
+  which costs ~6x more — tell the user which model and price the style requires and get
+  confirmation before spending, rather than silently switching.** Check `recraft models` for its
+  price if unsure.
 - Exit codes: `0` ok, `1` API/network error, `2` bad arguments, `3` out of credits.
 - Billing is already handled correctly and is not configurable. Nothing to set up per call.
 - It needs `RECRAFT_API_TOKEN` set, or a token at `~/.config/recraft/token`. If it exits 2 saying
