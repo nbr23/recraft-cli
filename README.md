@@ -25,6 +25,15 @@ Then allow it once in `.claude/settings.json` to stop the per-call permission pr
 { "permissions": { "allow": ["Bash(recraft:*)"] } }
 ```
 
+Third-party marketplaces don't auto-update by default, so new releases won't reach you on their
+own. Pull them with:
+
+```
+/plugin marketplace update nbr23
+```
+
+or turn on auto-update for this marketplace from `/plugin` → Marketplaces.
+
 ### Usage
 
 Once installed, just ask Claude naturally — the skill tells it when to reach for `recraft`:
