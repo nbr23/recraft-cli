@@ -28,6 +28,18 @@ Typical costs: a V4.1 image ~$0.035, vectorize or remove-bg ~$0.01, `--mode cris
 - `--dry-run` prints the exact request and spends nothing. Use it to check a command is right.
 - `recraft balance` shows remaining credits. Exit code 3 means the balance is exhausted.
 
+## Never overwrite or delete a file unless explicitly asked
+
+Your default job is to propose new variants, not to replace what's already there.
+
+- Always write to a new path (e.g. `bike.png` -> `bike-v2.png`). Never reuse an existing filename
+  for a generate/edit/variate/upscale/etc. output, even a file you just created this turn, unless
+  the user explicitly says to replace/overwrite it.
+- Never pass `--force`. It exists for the user to invoke deliberately, not for you to route around
+  the CLI's own "refuses to overwrite" protection.
+- Never delete a file (including `recraft delete-style`) as a way to "clean up" or retry — ask
+  first.
+
 ## Reading the output
 
 Every image command prints one line per file: `path  dimensions  model  credits`. `--json` gives a
