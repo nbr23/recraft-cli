@@ -1,0 +1,15 @@
+{
+  "name": "nbr23",
+  "description": "Small, agent-oriented developer tools.",
+  "owner": {
+    "name": "nbr23",
+    "url": "https://github.com/nbr23"
+  },
+  "plugins": [
+    {
+      "name": "recraft",
+      "source": "./",
+      "description": "Unofficial Recraft AI image CLI, packaged for agent use. Adds a `recraft` command to the Bash tool's PATH and a skill describing when to reach for it."
+    }
+  ]
+}

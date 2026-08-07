@@ -1,0 +1,11 @@
+{
+  "name": "recraft",
+  "description": "Generate, edit, vectorize and upscale images with the Recraft AI API. Writes image files to disk and prints their paths, so image bytes never enter the context window.",
+  "version": "0.1.0",
+  "author": {
+    "name": "nbr23"
+  },
+  "homepage": "https://github.com/nbr23/recraft-cli",
+  "repository": "https://github.com/nbr23/recraft-cli",
+  "license": "MIT"
+}
