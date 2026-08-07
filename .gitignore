@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+dist/
+build/
+*.egg-info/
+
+# Generated image output at the repo root (test artifacts, scratch renders).
+# Nested asset directories are deliberately not ignored.
+/*.png
+/*.webp
+/*.svg
+/*.jpg
+/*.jpeg
