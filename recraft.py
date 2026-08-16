@@ -1121,7 +1121,10 @@ def add_styling(parser: argparse.ArgumentParser, size: bool = True, count: bool 
         "--model", metavar="ID", default="recraftv4_1",
         help=f"see `{PROG} models`; default recraftv4_1, the latest general-purpose model",
     )
-    parser.add_argument("--style", metavar="STYLE", help=f"see `{PROG} styles`")
+    parser.add_argument(
+        "--style", metavar="STYLE",
+        help=f"see `{PROG} styles`; v3/20b models only, not the default model",
+    )
     parser.add_argument("--substyle", metavar="SUBSTYLE")
     parser.add_argument("--style-id", metavar="UUID", help="custom style; excludes --style")
     if size:
@@ -1132,7 +1135,10 @@ def add_styling(parser: argparse.ArgumentParser, size: bool = True, count: bool 
     parser.add_argument("--seed", type=int, metavar="INT")
     parser.add_argument("--format", choices=("png", "webp"), help="raster format (default png)")
     parser.add_argument("--artistic-level", type=int, choices=range(6), metavar="0-5")
-    parser.add_argument("--no-text", action="store_true", help="discourage rendered text")
+    parser.add_argument(
+        "--no-text", action="store_true",
+        help="discourage rendered text; v3/20b models only, not the default model",
+    )
     parser.add_argument("--colors", metavar="HEX,HEX", help='e.g. "#ff0000,#00ff00"')
     parser.add_argument("--background-color", metavar="HEX")
     parser.add_argument("--creativity", choices=("simple", "standard", "eccentric"))

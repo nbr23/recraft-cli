@@ -63,8 +63,14 @@ have no model concept — their column prints `-`.
 
 - It refuses to overwrite an existing file. Pass `--force` deliberately, or write to a new path;
   a plain retry will not clobber a good asset.
-- Styles are a large, changing list. Run `recraft styles` to see valid values instead of guessing;
-  `recraft models` lists models and prices.
+- **Don't pass `--style`, `--substyle`, `--style-id` or `--no-text` unless the user explicitly asks
+  for a style or for text-free output.** The default model, `recraftv4_1`, has no style catalog
+  (`recraft styles --model recraftv4_1` is empty) and rejects these; adding them on your own
+  initiative is the most common way to turn a working call into a 400. Put the look in the prompt
+  instead — "a minimal flat vector icon of a bicycle" works, `--style icon` does not.
+- Styles are a large, changing list, and belong to the older `recraftv3` / `recraft20b` models. Run
+  `recraft styles` to see valid values instead of guessing; `recraft models` lists models and
+  prices.
 - The STYLE column in `recraft styles` (e.g. "Pixel art") is a preset name, not a valid `--style`
   value — passing it directly gets a 400 `invalid_request_parameter`. To use a preset, pass its
   STYLE_ID column value via `--style-id <UUID>`. `--style` itself only accepts the small set of
