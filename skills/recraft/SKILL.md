@@ -1,10 +1,12 @@
 ---
+name: recraft
 description: Generate, edit, vectorize, upscale, or remove backgrounds from images using the Recraft AI API. Use when asked to create an image, icon, logo, illustration, or SVG, or to modify an existing image file. Spends real money per call.
 ---
 
 # recraft
 
-The `recraft` command is on your PATH. It calls the Recraft AI image API, writes the result to a
+Use `recraft` when it is on `PATH`. Otherwise, resolve the plugin root from this file's location and
+run `../../bin/recraft` by absolute path. It calls the Recraft AI image API, writes the result to a
 file, and prints the path.
 
 **`recraft COMMAND --help` is the reference.** Every subcommand documents its flags and shows a
