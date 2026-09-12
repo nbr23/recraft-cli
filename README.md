@@ -11,8 +11,30 @@ Spends **API credits**, never subscription credits.
 
 Requires [uv](https://docs.astral.sh/uv/).
 
-As a Claude Code plugin — adds `recraft` to the Bash tool's `PATH`, plus a skill telling Claude when
-to use it:
+### Codex
+
+Register the GitHub repository as a marketplace, then install the plugin:
+
+```sh
+codex plugin marketplace add nbr23/recraft-cli
+codex plugin add recraft@nbr23
+```
+
+Start a new Codex thread after installation so the `recraft` skill is loaded. Then ask naturally:
+
+```text
+generate an icon of a red bicycle, save it as bike.svg
+remove the background from screenshot.png
+vectorize this logo
+what's my Recraft balance?
+```
+
+The skill selects the appropriate command and flags. Type `@` and choose Recraft to invoke it
+explicitly.
+
+### Claude Code
+
+The plugin adds `recraft` to the Bash tool's `PATH`, plus a skill telling Claude when to use it:
 
 ```
 /plugin marketplace add nbr23/recraft-cli
