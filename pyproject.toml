@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "nbr23-recraft"
-version = "0.3.0"
+version = "0.4.0"
 description = "Unofficial CLI for the Recraft AI image API, designed to be driven by LLM coding agents"
 readme = "README.md"
 requires-python = ">=3.11"
